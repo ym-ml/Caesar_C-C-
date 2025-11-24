@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 #include "../include/cpp_moduleBridge.h"
+=======
+#include "../include/c_module.h"
+#include "../include/cpp_moduleBridge.h"
+
+>>>>>>> 1a94f52916f87a0d51e9a88f89e0c8c988c090f1
 int main(){
     char a[500];
     int b,key;
