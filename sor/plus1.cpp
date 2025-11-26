@@ -15,7 +15,12 @@ extern "C" void function(const char* h,int goal_len,int key)
             sum++;
         }
     }
-    char matrix_t[goal_len][len/goal_len];
+
+    char** matrix_t = (char**)malloc(goal_len * sizeof(char*));
+    for(int i = 0; i < goal_len; i++) {
+        matrix_t[i] = (char*)malloc((len/goal_len) * sizeof(char));
+    }//动态分配二维数组
+
     for(int i=0;i<(len/goal_len);i++)
     {
         for(int j=i*goal_len;j<(int)((i+1)*goal_len);j++)
@@ -43,4 +48,10 @@ extern "C" void function(const char* h,int goal_len,int key)
         }
         cout<<endl;
     }
+
+    for(int i = 0; i < goal_len; i++) {
+        free(matrix_t[i]);
+    }
+    free(matrix_t);//释放内存
+
 }
