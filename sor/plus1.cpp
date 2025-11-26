@@ -1,4 +1,5 @@
-#include "../include/cpp_moduleBridge.h"
+﻿#include "../include/cpp_moduleBridge.h"
+#include "../include/c_module.h"
 using namespace std;
 extern "C" void function(const char* h,int goal_len,int key)
 {
@@ -46,7 +47,7 @@ extern "C" void function(const char* h,int goal_len,int key)
             }
             cout<<matrix_t[i][j];
         }
-        cout<<endl;
+    
     }
 
     for(int i = 0; i < goal_len; i++) {
