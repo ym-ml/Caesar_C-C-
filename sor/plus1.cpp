@@ -56,7 +56,7 @@ extern "C" void function(const char* h,int goal_len,int key)
 
 }
 //解密
-void de_function(const char* h,int goal_len,int key)
+extern "C" void de_function(const char* h,int goal_len,int key)
 {
     srand(key);
     string s;
@@ -129,27 +129,4 @@ void de_function(const char* h,int goal_len,int key)
     }
     //输出
     cout<<ini;
-}
-int main()
-{
-    char h[500];
-    fgets(h,500,stdin);
-    for(int i=0;i<500;i++)
-    {
-        if(h[i]=='\n')
-        {
-            h[i]='\0';
-        }
-    }
-    int i;
-    cin>>i;
-    if(i==0)
-    {
-        function(h,5,7);
-    }
-    else
-    {
-        de_function(h,5,7);
-    }
-    return 0;
 }
