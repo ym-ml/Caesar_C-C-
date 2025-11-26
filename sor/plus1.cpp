@@ -41,6 +41,48 @@ extern "C" void function(const char* h,int goal_len,int key)
             }
             cout<<matrix_t[i][j];
         }
+        
+    }
+}
+void de_function(const char* h,int goal_len,int key)
+{
+    string s;
+    string ini;
+    s=h;
+    char a[goal_len][s.size()/goal_len];
+    for(int i=0;i<goal_len;i++)
+    {
+        for(int j=0;j<s.size()/goal_len;j++)
+        {
+            a[i][j]=s[j+i*(s.size()/goal_len)];
+        }
+    }
+    for(int i=0;i<goal_len;i++)
+    {
+        for(int j=0;j<s.size()/goal_len;j++)
+        {
+            cout<<a[i][j];
+        }
         cout<<endl;
     }
+    //cout<<ini;
+    string rand_alpha;
+    char add;
+    int rand_alpha_sum=0;
+    for(int i=0;i<goal_len;i++)
+    {
+        add=rand()%123;
+        if((add>=48&&add<=57)||(add>=65&&add<=90)||(add>=97&&add<=122))
+        {
+            rand_alpha+=(char)add;
+            rand_alpha_sum++;
+        }
+    }
+}
+int main()
+{
+    char h[500];
+    cin>>h;
+    de_function(h,4,123);
+    return 0;
 }
