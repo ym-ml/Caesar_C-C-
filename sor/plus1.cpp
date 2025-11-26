@@ -1,4 +1,5 @@
 #include "../include/cpp_moduleBridge.h"
+#include "../include/c_module.h"
 using namespace std;
 //加密
 extern "C" void function(const char* h,int goal_len,int key)
