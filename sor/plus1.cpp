@@ -1,5 +1,6 @@
 #include "../include/cpp_moduleBridge.h"
 using namespace std;
+//加密
 extern "C" void function(const char* h,int goal_len,int key)
 {
     string a=h;
@@ -15,7 +16,12 @@ extern "C" void function(const char* h,int goal_len,int key)
             sum++;
         }
     }
-    char matrix_t[goal_len][len/goal_len];
+
+    char** matrix_t = (char**)malloc(goal_len * sizeof(char*));
+    for(int i = 0; i < goal_len; i++) {
+        matrix_t[i] = (char*)malloc((len/goal_len) * sizeof(char));
+    }//动态分配二维数组
+
     for(int i=0;i<(len/goal_len);i++)
     {
         for(int j=i*goal_len;j<(int)((i+1)*goal_len);j++)
@@ -41,48 +47,109 @@ extern "C" void function(const char* h,int goal_len,int key)
             }
             cout<<matrix_t[i][j];
         }
-        
     }
+    cout<<endl;
+    for(int i = 0; i < goal_len; i++) {
+        free(matrix_t[i]);
+    }
+    free(matrix_t);//释放内存
+
 }
+//解密
 void de_function(const char* h,int goal_len,int key)
 {
+    srand(key);
     string s;
     string ini;
     s=h;
+    //每个字符循环-3
+    for(int i=0;i<(int)s.size();i++)
+    {
+        if(s[i]>='A'&&s[i]<='Z')
+        {
+            s[i]=(s[i]-'A'-3+26)%26+'A';
+        }
+        if(s[i]>='a'&&s[i]<='z')
+        {
+            s[i]=(s[i]-'a'-3+26)%26+'a';
+        }
+        if(s[i]>='0'&&s[i]<='9')
+        {
+            s[i]=(s[i]-'0'-3+10)%10+'0';
+        }
+    }
+    //转换成逆矩阵
     char a[goal_len][s.size()/goal_len];
     for(int i=0;i<goal_len;i++)
     {
-        for(int j=0;j<s.size()/goal_len;j++)
+        for(int j=0;j<(int)s.size()/goal_len;j++)
         {
             a[i][j]=s[j+i*(s.size()/goal_len)];
         }
     }
-    for(int i=0;i<goal_len;i++)
+    //把逆矩阵再转换为一行
+    for(int i=0;i<(int)s.size()/goal_len;i++)
     {
-        for(int j=0;j<s.size()/goal_len;j++)
+        for(int j=0;j<goal_len;j++)
         {
-            cout<<a[i][j];
+            ini+=a[j][i];
         }
-        cout<<endl;
     }
-    //cout<<ini;
+    //根据随机数种子生成加密时可能生成的最大长度的随机数列
     string rand_alpha;
     char add;
     int rand_alpha_sum=0;
-    for(int i=0;i<goal_len;i++)
+    for(int i=0;i<goal_len-1;)
     {
         add=rand()%123;
         if((add>=48&&add<=57)||(add>=65&&add<=90)||(add>=97&&add<=122))
         {
             rand_alpha+=(char)add;
             rand_alpha_sum++;
+            i++;
         }
     }
+    //遍历，从逆矩阵最后一列的第二个字符开始寻找，找能与rand_alpha完全重合的
+    for(int i=(((int)ini.size()-goal_len)<0?0:(ini.size()-goal_len));i<(int)ini.size();i++)
+    {
+        if(ini[i]==rand_alpha[0])
+        {
+            for(int j=i;j<(int)ini.size();j++)
+            {
+                if(ini[j]!=rand_alpha[j-i])
+                {
+                    goto l;
+                }
+            }
+            //抹去添加的随机字符串列
+            ini.erase(i);
+        }
+        l:
+        continue;
+    }
+    //输出
+    cout<<ini;
 }
 int main()
 {
     char h[500];
-    cin>>h;
-    de_function(h,4,123);
+    fgets(h,500,stdin);
+    for(int i=0;i<500;i++)
+    {
+        if(h[i]=='\n')
+        {
+            h[i]='\0';
+        }
+    }
+    int i;
+    cin>>i;
+    if(i==0)
+    {
+        function(h,5,7);
+    }
+    else
+    {
+        de_function(h,5,7);
+    }
     return 0;
 }
