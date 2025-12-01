@@ -1,7 +1,7 @@
 #include "../include/c_module.h"
 
 void CaesarForceCrack(const char* text){
-    int len=strlen(text);
+    size_t len=strlen(text);
     if (len>25)len=25; //限制最大长度，防止输出过长
 
     char result[MAX];

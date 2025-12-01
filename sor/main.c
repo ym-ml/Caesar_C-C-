@@ -19,14 +19,15 @@ int main(){
     printf("4.Crack Classic Caesar cipher by force--statistic method(暴力破解--统计方法)\n");
 
     printf("May be after trying the cracking method,you will find that the Classic Caesar cipher is not very secure.\n");
-    printf("So,we provide you with two secure method:\n");
+    printf("(在尝试了暴力破解方法后,你会发现经典凯撒密码并不是很安全)\n");
+    printf("So,we provide you with two secure method(因此我们提供两个比较安全的方法):\n");
     printf("5.My Optimized1 Caesar encode\n");
     printf("6.My Optimized1 Caesar decode\n");
     printf("7.My Optimized2 Caesar encode\n");
     printf("8.My Optimized2 Caesar decode\n");
 
     fgets(choose,3,stdin);
-    if (choose[0]< '1' || choose[0] > '6') {
+    if (choose[0]< '1' || choose[0] > '8') {
         printf("Invalid choice. Exiting.\n");
         return 1;
     }else if (choose[1] !='\n'){
