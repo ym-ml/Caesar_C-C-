@@ -1,7 +1,7 @@
 #include "../include/cpp_moduleBridge.h"
 #include "../include/c_module.h"
 using namespace std;
-struct char_number
+extern "C" struct char_number
 {
     int sum=0;
     char c;
