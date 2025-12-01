@@ -9,7 +9,7 @@
 #define MAX 500
 
 void get_input_text(char *text);
-void get_input_keys(int *key, int *column,int choose);
+void get_input_keys(int *key, int *column,char choose);
 void Caesar(const char* text, int key);
 void CaesarForceCrack(const char* text);
 
