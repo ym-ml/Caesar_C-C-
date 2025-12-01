@@ -14,9 +14,10 @@ int main(){
     printf("2.Classic Caesar decode(2.经典凯撒解密)\n");
 
     printf("Do you want to Crack the Caesar cipher by force?(你想通过暴力破解凯撒密码吗?)n");
-    printf("Please enter 3 or 4 to have a try():\n");
-    printf("3.Crack Classic Caesar cipher by force(by trying all the possible keys)\n");
-    printf("4.Crack Classic Caesar cipher by force(easier method)\n");
+    printf("Please enter 3 or 4 to have a try(请尝试输入3或4):\n");
+    printf("3.Crack Classic Caesar cipher by force--by trying all the possible keys(暴力破解--所有可能的密钥)\n");
+    printf("4.Crack Classic Caesar cipher by force--statistic method(暴力破解--统计方法)\n");
+
     printf("May be after trying the cracking method,you will find that the Classic Caesar cipher is not very secure.\n");
     printf("So,we provide you with two secure method:\n");
     printf("5.My Optimized1 Caesar encode\n");
@@ -60,9 +61,9 @@ int main(){
             break;
         
         case 5:
-            printf("While you have seen that the Classic Caesar cipher is not very secure,\n");
-            printf("we provide you with a more secure method: My Plus 1 Caesar cipher.\n");
-            printf("You chose My Plus 1 Caesar encode\n");
+            
+            printf("a more secure method: My Optimized1 Caesar cipher.\n");
+            printf("You chose My Optimized1 Caesar encode\n");
             printf("Here is the encoding result:\n");
             get_input_text(text);
             get_input_keys(&key,&column,choose);
