@@ -1,4 +1,4 @@
-#ifndef CPP_BRIDGE_H
+﻿#ifndef CPP_BRIDGE_H
 #define CPP_BRIDGE_H
 
 #ifdef __cplusplus

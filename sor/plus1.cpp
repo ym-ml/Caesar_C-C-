@@ -1,4 +1,4 @@
-#include "../include/cpp_moduleBridge.h"
+﻿#include "../include/cpp_moduleBridge.h"
 #include "../include/c_module.h"
 using namespace std;
 //加密
@@ -80,12 +80,13 @@ extern "C" void de_function(const char* h,int goal_len,int key)
         }
     }
     //转换成逆矩阵
-    char a[goal_len][s.size()/goal_len];
-    for(int i=0;i<goal_len;i++)
+    size_t cols = s.size() / goal_len;
+    std::vector<std::string> a(goal_len, std::string(cols, '\0'));
+    for(int row=0;row<goal_len;row++)
     {
-        for(int j=0;j<(int)s.size()/goal_len;j++)
+        for(size_t col=0;col<cols;col++)
         {
-            a[i][j]=s[j+i*(s.size()/goal_len)];
+            a[row][col]=s[col + row * cols];
         }
     }
     //把逆矩阵再转换为一行
