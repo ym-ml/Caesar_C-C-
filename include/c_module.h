@@ -7,4 +7,7 @@
 
 #define MAX 500
 
+
+void get_input(char *text, int *key, int *column);
+
 #endif //C_MODULE_H
