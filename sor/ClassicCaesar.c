@@ -11,6 +11,9 @@ void Caesar(const char* text, int key){
         else if(ch>='a'&&ch<='z'){
             result[i]=(ch-'a'+key+26)%26+'a';
         }
+        else if(ch>='0'&&ch<='9'){
+            result[i]=(ch-'0'+key+10)%10+'0';
+        }
         else{
             result[i]=ch;
         }
