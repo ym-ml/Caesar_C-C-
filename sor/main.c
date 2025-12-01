@@ -7,8 +7,6 @@ int main(){
     int column,key;
     column=sqrt(MAX);
     get_input(text,&key,&column);
-    
-    
     function(text,column,key);
     system("pause");
     return 0;
