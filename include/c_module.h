@@ -12,5 +12,5 @@ void get_input_text(char *text);
 void get_input_keys(int *key, int *column,char choose);
 void Caesar(const char* text, int key);
 void CaesarForceCrack(const char* text);
-void char_count(const char* ori_char);
+
 #endif //C_MODULE_H

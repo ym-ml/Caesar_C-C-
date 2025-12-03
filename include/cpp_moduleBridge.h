@@ -18,7 +18,7 @@ extern "C" {
 //void cpp_function_1(void);
 //int cpp_calculate(int a, int b);
 void function(const char* a,int b,int key);
-
+void char_count(const char* ori_char);
 #ifdef __cplusplus
 }
 #endif

@@ -12,10 +12,12 @@ void char_count(const char* ori_char)
     ori_str=ori_char;
     int len=(int)ori_str.size();
     char_number char_num[26];
+    //初始化
     for(int i=0;i<26;i++)
     {
         char_num[i].c=i+'a';
     }
+    //统计每个字符的出现次数
     for(int i=0;i<len;i++)
     {
         if(ori_str[i]>='A'&&ori_str[i]<='Z')
@@ -28,6 +30,7 @@ void char_count(const char* ori_char)
         }
     }
     char_number mid;
+    //冒泡排序，降序
     for(int i=0;i<25;i++)
     {
         for(int j=0;j<25-i;j++)
@@ -40,35 +43,33 @@ void char_count(const char* ori_char)
             }
         }
     }
-    /*for(int i=0;i<26;i++)
-    {
-        cout<<char_num[i].c<<' '<<char_num[i].sum<<' '<<i<<endl;
-    }*/
+    //计算偏移量
     int excursion=0;
-    for(int i=0;i<26;i++)
+    for(int i=0;i<6;i++)
     {
         if(char_num[i].sum<=0)
         {
-            break;
+            break;//提前退出，如果字符很少
         }
-        excursion=char_num[i].c-'e';
+        excursion=(char_num[i].c-'e')*(-1);
         fin_str=ori_str;
-        for(int i=0;i<len;i++)
+        //每一个字符都加上偏移量
+        for(int j=0;j<len;j++)
         {
-            if(fin_str[i]>='a'&&fin_str[i]<='z')
+            if(fin_str[j]>='a'&&fin_str[j]<='z')
             {
-                fin_str[i]=(fin_str[i]-'a'+excursion+26)%26+'a';
+                fin_str[j]=(fin_str[j]-'a'+excursion+26)%26+'a';
             }
-            else if(fin_str[i]>='A'&&fin_str[i]<='Z')
+            else if(fin_str[j]>='A'&&fin_str[j]<='Z')
             {
-                fin_str[i]=(fin_str[i]-'A'+excursion+26)%26+'A';
+                fin_str[j]=(fin_str[j]-'A'+excursion+26)%26+'A';
             }
-            else if(fin_str[i]>='0'&&fin_str[i]<='9')
+            else if(fin_str[j]>='0'&&fin_str[j]<='9')
             {
-                fin_str[i]=(fin_str[i]-'0'+excursion%10+10)%10+'0';
+                fin_str[j]=(fin_str[j]-'0'+excursion%10+10)%10+'0';
             }
-            cout<<fin_str[i];
+            cout<<fin_str[j];//直接输出
         }
-        cout<<' '<<i<<endl;
+        cout<<endl<<endl;
     }
 }
