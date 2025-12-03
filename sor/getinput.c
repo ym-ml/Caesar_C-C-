@@ -2,7 +2,8 @@
 
 void get_input_text(char *text){
      
-    printf("Please enter the text to be encoded\n");
+    printf("Please enter the text:\n");
+    printf("请输入文本:\n");
     fgets(text,MAX,stdin);
     if (text[strlen(text)-1]!='\n'){
         int clear_buffer;
@@ -21,16 +22,41 @@ void get_input_text(char *text){
 
 
 void get_input_keys(int *key, int *column,char choose){
-    char input_keys[3];
-    
-    if (choose=='1' || choose=='2'){
+    char input_keys[5];
+    switch (choose)
+    {
+    case '1':
+    case '7':
         printf("Please enter the key(number):\n");
-    }
-    else if (choose=='5' || choose=='6'){
+        printf("请输入密钥(数字):\n");
+        break;
+    case '2':
+    case '8':
+        printf("Please enter the same key of the encode:\n");
+        printf("请输入加密时使用的相同密钥:\n");
+       
+        break;
+    case '5':
         printf("Please enter the key.\nYou can use one number or two numbers as your key:\n");
+        printf("请输入密钥。你可以使用一个数字或两个数字作为你的密钥:\n");
+        break;
+    case '6':
+        printf("Please enter the key used in encoding.\nYou must use the same key of the encode:\n");
+        printf("请输入加密时使用的密钥。你必须使用相同的密钥:\n");
+        break;
+    
+    default:
+        break;
     }
+
     //scanf("%d",key); //key已经是指针类型
-    fgets(input_keys,3,stdin);
+    fgets(input_keys,5,stdin);
+
+    if (input_keys[strlen(input_keys)-1]!='\n'){
+        int clear_buffer;
+        while ((clear_buffer=getchar())!='\n'&&clear_buffer!=EOF); 
+    }//如果输出被截断,清空输入缓冲区
+
     if(strlen(input_keys)==2){
         *key=input_keys[0]-'0';
         *column=input_keys[1]-'0';
