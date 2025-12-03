@@ -1,7 +1,7 @@
 #include "../include/c_module.h"
 
 void Caesar(const char* text, int key){
-    int len=strlen(text);
+    size_t len=strlen(text);
     char result[MAX];
     for(int i=0;i<len;i++){
         char ch=text[i];

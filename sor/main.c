@@ -2,7 +2,7 @@
 #include "../include/cpp_moduleBridge.h"
 
 int main(){
-    int choose;
+    char choose[3];
     char text[MAX];
 
     int column,key;
@@ -19,30 +19,40 @@ int main(){
     printf("4.Crack Classic Caesar cipher by force--statistic method(暴力破解--统计方法)\n");
 
     printf("May be after trying the cracking method,you will find that the Classic Caesar cipher is not very secure.\n");
-    printf("So,we provide you with two secure method:\n");
+    printf("(在尝试了暴力破解方法后,你会发现经典凯撒密码并不是很安全)\n");
+    printf("So,we provide you with two secure method(因此我们提供两个比较安全的方法):\n");
     printf("5.My Optimized1 Caesar encode\n");
     printf("6.My Optimized1 Caesar decode\n");
     printf("7.My Optimized2 Caesar encode\n");
     printf("8.My Optimized2 Caesar decode\n");
-    scanf("%d",&choose);
-    switch (choose){
-        case 1:
+
+    fgets(choose,3,stdin);
+    if (choose[0]< '1' || choose[0] > '8') {
+        printf("Invalid choice. Exiting.\n");
+        return 1;
+    }else if (choose[1] !='\n'){
+        int clear_buffer;
+        while ((clear_buffer=getchar())!='\n' && clear_buffer!=EOF); // 如果输入发生了截断,清空输入缓冲区，
+    }
+            
+    switch (choose[0]){
+        case '1':
             printf("You chose Classic Caesar encode,please input your text and key\n");
             get_input_text(text);
-            get_input_keys(&key,&column,choose);
+            get_input_keys(&key,&column,choose[0]);
             printf("Here is the encoding result:\n");
             Caesar(text,key);
             break;
-        case 2:
+        case '2':
             printf("You chose Classic Caesar decode,please input your text and key\n");
             get_input_text(text);
-            get_input_keys(&key,&column,choose);
+            get_input_keys(&key,&column,choose[0]);
 
             printf("Here is the decoding result:\n");
             key=-key;
             Caesar(text,key);
             break;
-        case 3:
+        case '3':
             printf("Please input the decoded text");
             get_input_text(text);
 
@@ -50,7 +60,7 @@ int main(){
             CaesarForceCrack(text);
             printf("\nAlso,you can enter 4 to have a easier method to decode it by force.\n");
             break;
-        case 4:
+        case '4':
             printf("You chose the easier method to crack Classic Caesar cipher by force\n");
             printf("Please input the decoded text\n");
             get_input_text(text);
@@ -59,16 +69,16 @@ int main(){
             char_count(text);
             break;
         
-        case 5:
+        case '5':
             
             printf("a more secure method: My Optimized1 Caesar cipher.\n");
             printf("You chose My Optimized1 Caesar encode\n");
             printf("Here is the encoding result:\n");
             get_input_text(text);
-            get_input_keys(&key,&column,choose);
+            get_input_keys(&key,&column,choose[0]);
             function(text,column,key);
             break;
-        case 6:
+        case '6':
             break;
 
         
