@@ -30,8 +30,11 @@ int main(){
     printf("Now the program is ready(现在程序准备就绪):\n");
     printf("Enter S to start and enter Anothers to quit(输入s开始选择,输入其余任意键退出):\n");
 
-while(getchar()=='s'||'S')
-{
+while(1)
+{   
+    if (getchar()!='s'&&getchar()!='S'){
+        break;
+    }
     getchar();
     printf("Please enter your choice(请输入你的选择):\n");
     fgets(choose,3,stdin);
@@ -140,7 +143,7 @@ while(getchar()=='s'||'S')
             printf("无效的选择。程序退出。\n");
             return 1;
     }
-    
+    printf("Enter S to continue and enter Anothers to quit(输入s继续,输入其余任意键退出):\n");
 }
     system("pause");
     return 0;
