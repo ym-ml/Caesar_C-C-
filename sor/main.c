@@ -27,9 +27,16 @@ int main(){
     printf("7.My Optimized2 Caesar encode(我的优化方法2)\n");
     printf("8.My Optimized2 Caesar decode(我的优化方法2)\n");
 
+    printf("Now the program is ready(现在程序准备就绪):\n");
+    printf("Enter S to start and enter Athers to quit(输入s开始,输入其余任意键退出):\n");
+
+while(getchar()=='s')
+{
+
     fgets(choose,3,stdin);
     if (choose[0]< '1' || choose[0] > '8') {
         printf("Invalid choice. Exiting.\n");
+        printf("无效的选择。程序退出。\n");
         return 1;
     }else if (choose[1] !='\n'){
         int clear_buffer;
@@ -39,79 +46,101 @@ int main(){
     switch (choose[0]){
         case '1':
             printf("You chose Classic Caesar encode,please input your text and key\n");
+            printf("你选择了经典凯撒加密,请输入你的文本和密钥\n");
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
             printf("Here is the encoding result:\n");
+            printf("加密结果如下:\n");
             Caesar(text,key);
             break;
         case '2':
             printf("You chose Classic Caesar decode,please input your text and key\n");
+            printf("你选择了经典凯撒解密,请输入你的文本和密钥\n");
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
 
             printf("Here is the decoding result:\n");
+            printf("解密结果如下:\n");
             key=-key;
             Caesar(text,key);
             break;
         case '3':
             printf("Please input the decoded text");
+            printf("你选择了通过暴力破解经典凯撒密码\n");
             get_input_text(text);
 
             printf("Here is the cracking result:\n");
+            printf("破解结果如下:\n");
             CaesarForceCrack(text);
             printf("\nAlso,you can enter 4 to have a easier method to decode it by force.\n");
+            printf("另外,你也可以输入4来使用一种更简单的方法进行暴力破解。\n");
             break;
         case '4':
             printf("You chose the easier method to crack Classic Caesar cipher by force\n");
+            printf("你选择了通过统计方法暴力破解经典凯撒密码\n");
             printf("Please input the decoded text\n");
+            printf("请输入解密文本\n");
             get_input_text(text);
 
             //这里调用C++函数实现更智能的破解
             printf("Here is the cracking result:\n");
+            printf("破解结果如下:\n");
 
+            char_count(text);
             break;
         
         case '5':
             
             printf("a more secure method: My Optimized1 Caesar cipher.\n");
+            printf("一种由凯撒密码引伸的更安全的方法: 我的优化方法1。\n");
             printf("You chose My Optimized1 Caesar encode\n");
+            printf("你选择了我的优化方法1加密\n");
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
             printf("Here is the encoding result:\n");
+            printf("加密结果如下:\n");
             function(text,column,key);
             break;
         case '6':
 
             printf("This is the decoding of My Optimized1 Caesar cipher.\n");
+            printf("你选择了我的优化方法1解密\n");
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
             printf("Here is the decoding result:\n");
+            printf("解密结果如下:\n");
             de_function(text,column,key);
 
             break;
         case '7':
-            printf("another more secure method: My Optimized2 Caesar cipher.\n");
+            printf("Another more secure method: My Optimized2 Caesar cipher.\n");
+            printf("另一种由凯撒密码引伸的更安全的方法: 我的优化方法2。\n");
             printf("You chose My Optimized2 Caesar encode\n");
+            printf("你选择了我的优化方法2加密\n");
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
             printf("Here is the encoding result:\n");
+            printf("加密结果如下:\n");
             stream_encrypt(text,key);
             break;
         case '8':
             printf("This is the decoding of My Optimized2 Caesar cipher.\n");
+            printf("你选择了我的优化方法2解密\n");
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]); 
             printf("Here is the decoding result:\n");
+            printf("解密结果如下:\n");
             stream_decrypt(text,key);
             break;
 
         
         default:
             printf("Invalid choice. Exiting.\n");
+            printf("无效的选择。程序退出。\n");
             return 1;
     }
     
-    function(text,column,key);
+}
     system("pause");
     return 0;
 }
