@@ -28,11 +28,12 @@ int main(){
     printf("8.My Optimized2 Caesar decode(我的优化方法2)\n");
 
     printf("Now the program is ready(现在程序准备就绪):\n");
-    printf("Enter S to start and enter Athers to quit(输入s开始,输入其余任意键退出):\n");
+    printf("Enter S to start and enter Anothers to quit(输入s开始选择,输入其余任意键退出):\n");
 
-while(getchar()=='s')
+while(getchar()=='s'||'S')
 {
-
+    getchar();
+    printf("Please enter your choice(请输入你的选择):\n");
     fgets(choose,3,stdin);
     if (choose[0]< '1' || choose[0] > '8') {
         printf("Invalid choice. Exiting.\n");
