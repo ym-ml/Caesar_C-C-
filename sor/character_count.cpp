@@ -8,6 +8,7 @@ extern "C" struct char_number
 };
 extern "C" void char_count(const char* ori_char)
 {
+    initgraph(800,600);//初始化图形窗口
     string ori_str,fin_str;
     ori_str=ori_char;
     int len=(int)ori_str.size();
@@ -72,4 +73,47 @@ extern "C" void char_count(const char* ori_char)
         }
         cout<<endl<<endl;
     }
+    setbkcolor(WHITE);
+    cleardevice();
+    int data[5];
+    for(int i=0;i<5;i++)
+    {
+        data[i]=char_num[i].sum;
+    }
+    int left,bottom;
+    left=100;bottom=500;
+    int datac=5;
+    int axsis_x=600,axsis_y=400;
+    //绘制坐标轴
+    int bar_width=50;
+    int s=(axsis_x-datac*bar_width)/(datac+1);
+    setlinecolor(BLACK);
+    setlinestyle(PS_SOLID,2);
+    line(left,bottom,left+axsis_x,bottom);//x轴
+    line(left,bottom,left,bottom-axsis_y);//y轴
+    settextcolor(BLACK);
+    settextstyle(20,0,_T("Arial"));
+    for(int i=0;i<6;i++)
+    {
+        int y=bottom-i*(axsis_y/5);
+        line(left-5,y,left,y);//y轴刻度
+        string v=to_string(i*20);
+        outtextxy(left-40,y-8,v.c_str());
+    }
+    for(int j=0;j<datac;j++)
+    {
+        int bar_x=left+s+j*(bar_width+s);
+        int bar_h=(int)(((float)data[j]/(float)len)*(float)axsis_y);
+        int bar_y=bottom-bar_h;
+        setfillcolor(RGB(100,149,237));
+        fillrectangle(bar_x,bar_y,bar_x+bar_width,bottom);
+        string num=to_string(data[j]);
+        outtextxy(bar_x+bar_width/2-10,bar_y-25,(num.c_str()));
+        outtextxy(bar_x+bar_width/2-15,bottom+10,char_num[j].c);
+    }
+    settextstyle(24,0,_T("Arial"));
+    outtextxy(left+bar_width/2-60,bottom+50,"Character Frequency Histogram");
+    outtextxy(left-60,bottom-axsis_y/2,"Frequency");
+    system("pause");
+    closegraph();
 }

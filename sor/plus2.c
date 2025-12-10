@@ -1,4 +1,4 @@
-#include "../include/c_module.h"
+﻿#include "../include/c_module.h"
 
 
 // 简单 LCG(线性同余发生器) 用于生成伪随机位移序列

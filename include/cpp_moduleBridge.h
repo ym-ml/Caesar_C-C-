@@ -7,6 +7,7 @@
 #include<vector>
 #include<random>
 #include<cmath>
+#include<graphics.h>
 
 extern "C" {
 #else
