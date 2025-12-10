@@ -50,23 +50,22 @@ void get_input_keys(int *key, int *column,char choose){
     }
 
     //scanf("%d",key); //key已经是指针类型
-    fgets(input_keys,5,stdin);
+    fgets(input_keys,10,stdin);
 
     if (input_keys[strlen(input_keys)-1]!='\n'){
         int clear_buffer;
         while ((clear_buffer=getchar())!='\n'&&clear_buffer!=EOF); 
     }//如果输出被截断,清空输入缓冲区
 
-    if(strlen(input_keys)==2){
-        *key=input_keys[0]-'0';
-        *column=input_keys[1]-'0';
-    }
-    else{
-       *key=input_keys[0]-'0';
-        }
-        
-    if (input_keys[strlen(input_keys)-1]!='\n'){
-        int clear_buffer;
-        while ((clear_buffer=getchar())!='\n'&&clear_buffer!=EOF); 
-    }//如果输出被截断,清空输入缓冲区
+    char *find;
+    find=strchr(input_keys,' ');
+    
+
+    if(find!=NULL){
+        sscanf(input_keys,"%d %d",key,column);
+
+    }else{
+       sscanf(input_keys,"%d",key);
+    }//解析输入的密钥
+    printf("Got it!\n");
 }
