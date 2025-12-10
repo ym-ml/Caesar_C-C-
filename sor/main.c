@@ -30,8 +30,11 @@ int main(){
     printf("Now the program is ready(现在程序准备就绪):\n");
     printf("Enter S to start and enter Anothers to quit(输入s开始选择,输入其余任意键退出):\n");
 
-while(getchar()=='s'||'S')
-{
+while(1)
+{   
+    if (getchar()!='s'&&getchar()!='S'){
+        break;
+    }
     getchar();
     printf("Please enter your choice(请输入你的选择):\n");
     fgets(choose,3,stdin);
@@ -51,7 +54,7 @@ while(getchar()=='s'||'S')
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
             printf("Here is the encoding result:\n");
-            printf("加密结果如下:\n");
+            printf("加密结果如下:\n\n");
             Caesar(text,key);
             break;
         case '2':
@@ -61,7 +64,7 @@ while(getchar()=='s'||'S')
             get_input_keys(&key,&column,choose[0]);
 
             printf("Here is the decoding result:\n");
-            printf("解密结果如下:\n");
+            printf("解密结果如下:\n\n");
             key=-key;
             Caesar(text,key);
             break;
@@ -71,7 +74,7 @@ while(getchar()=='s'||'S')
             get_input_text(text);
 
             printf("Here is the cracking result:\n");
-            printf("破解结果如下:\n");
+            printf("破解结果如下:\n\n");
             CaesarForceCrack(text);
             printf("\nAlso,you can enter 4 to have a easier method to decode it by force.\n");
             printf("另外,你也可以输入4来使用一种更简单的方法进行暴力破解。\n");
@@ -85,7 +88,7 @@ while(getchar()=='s'||'S')
 
             //这里调用C++函数实现更智能的破解
             printf("Here is the cracking result:\n");
-            printf("破解结果如下:\n");
+            printf("破解结果如下:\n\n");
 
             char_count(text);
             break;
@@ -99,7 +102,7 @@ while(getchar()=='s'||'S')
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
             printf("Here is the encoding result:\n");
-            printf("加密结果如下:\n");
+            printf("加密结果如下:\n\n");
             function(text,column,key);
             break;
         case '6':
@@ -109,7 +112,7 @@ while(getchar()=='s'||'S')
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
             printf("Here is the decoding result:\n");
-            printf("解密结果如下:\n");
+            printf("解密结果如下:\n\n");
             de_function(text,column,key);
 
             break;
@@ -121,7 +124,7 @@ while(getchar()=='s'||'S')
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]);
             printf("Here is the encoding result:\n");
-            printf("加密结果如下:\n");
+            printf("加密结果如下:\n\n");
             stream_encrypt(text,key);
             break;
         case '8':
@@ -130,7 +133,7 @@ while(getchar()=='s'||'S')
             get_input_text(text);
             get_input_keys(&key,&column,choose[0]); 
             printf("Here is the decoding result:\n");
-            printf("解密结果如下:\n");
+            printf("解密结果如下:\n\n");
             stream_decrypt(text,key);
             break;
 
@@ -140,7 +143,7 @@ while(getchar()=='s'||'S')
             printf("无效的选择。程序退出。\n");
             return 1;
     }
-    
+    printf("\nEnter S to continue and enter Anothers to quit(输入s继续,输入其余任意键退出):\n");
 }
     system("pause");
     return 0;
