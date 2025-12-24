@@ -8,7 +8,7 @@ void get_input_text(char *text){
     if (text[strlen(text)-1]!='\n'){
         int clear_buffer;
         while ((clear_buffer=getchar())!='\n'&&clear_buffer!=EOF); 
-        printf("输入文本过长,请分开输入\n Please divide the text into smaller parts.");
+        printf("输入文本过长,请分开输入\n Please divide the text into smaller parts.\n");
     }//如果输出被截断,清空输入缓冲区
 
     char *find;
