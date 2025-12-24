@@ -9,7 +9,7 @@
 #include <errno.h>
 #include <stdint.h> 
 
-#define MAX 500
+#define MAX 10000
 
 void get_input_text(char *text);
 void get_input_keys(int *key, int *column,char choose);
